@@ -70,12 +70,8 @@ p { color: var(--muted); }
 footer { color: #fff; background: var(--navy); }
 .footer { min-height: 7rem; padding-block: 1.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
 .footer p { color: #dce6fb; font-size: .875rem; }
-.credit { display: inline-flex; align-items: center; gap: .65rem; text-decoration: none; }
-.credit span { display: grid; line-height: 1.3; }
-.credit small { color: #dce6fb; }
-.credit:hover strong { text-decoration: underline; }
 @media (max-width: 1020px) { .services { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 800px) {
+@media (max-width: 991px) {
   :root { --header: 4rem; }
   .hero-grid, .split { grid-template-columns: minmax(0, 1fr); }
   .hero-image { aspect-ratio: 1.5; }

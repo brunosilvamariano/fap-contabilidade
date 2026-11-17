@@ -7,19 +7,25 @@ export function ContactForm() {
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const fields = new FormData(event.currentTarget)
-    const message = ['Gostaria de conversar com um contador.', '', 'Nome: ' + fields.get('name'), 'Empresa ou atividade: ' + fields.get('company'), 'Assunto: ' + fields.get('topic')].join('\n')
+    const message = [
+      'Gostaria de solicitar um retorno.', '',
+      'Nome: ' + fields.get('name'),
+      'E-mail: ' + fields.get('email'),
+      'Telefone: ' + fields.get('phone'),
+      'Assunto: ' + fields.get('subject'), '',
+      'Mensagem: ' + fields.get('message'),
+    ].join('\n')
     window.open(whatsapp(message), '_blank', 'noopener,noreferrer')
   }
 
   return (
-    <form className="contact-form" onSubmit={submit}>
-      <label>Seu nome<input name="name" autoComplete="name" required maxLength={100} /></label>
-      <label>Empresa ou atividade<input name="company" autoComplete="organization" required maxLength={140} /></label>
-      <label>Como podemos ajudar?<select name="topic" defaultValue="" required>
-        <option value="" disabled>Selecione um assunto</option>
-        <option>Abertura de empresa</option><option>Troca de contador</option><option>Escrituração fiscal</option><option>Contabilidade mensal</option><option>Departamento pessoal</option>
-      </select></label>
-      <button type="submit" className="button">Conversar no WhatsApp <span aria-hidden="true">↗</span></button>
+    <form className="contact-form contact-form-original" onSubmit={submit}>
+      <label><input name="name" placeholder=" " autoComplete="name" required maxLength={140} /><span>Seu nome</span></label>
+      <label><input type="email" name="email" placeholder=" " autoComplete="email" required maxLength={140} /><span>Seu e-mail</span></label>
+      <label><input type="tel" name="phone" placeholder=" " autoComplete="tel" required maxLength={140} /><span>Seu telefone</span></label>
+      <label><input name="subject" placeholder=" " required maxLength={140} /><span>Assunto</span></label>
+      <label className="contact-wide"><textarea name="message" placeholder=" " required maxLength={1200} /><span>Mensagem</span></label>
+      <button type="submit" className="button contact-wide">Enviar pelo WhatsApp</button>
     </form>
   )
 }
